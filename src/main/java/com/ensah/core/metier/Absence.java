@@ -21,7 +21,7 @@ public class Absence {
    private String typeSaisie;
    
    /** @pdRoleInfo migr=no name=PieceJustificative assc=Absence_PieceJustificative coll=java.util.Collection impl=java.util.HashSet mult=0..* */
-   public java.util.Collection<PieceJustificative> pieceJustificative;
+   public java.util.Set<PieceJustificative> pieceJustificative;
    /** @pdRoleInfo migr=no name=Inscription assc=Association_9 coll=java.util.Collection impl=java.util.HashSet mult=1..1 */
    public Inscription inscription;
    /** @pdRoleInfo migr=no name=TypeSeance assc=Association_11 coll=java.util.Collection impl=java.util.HashSet mult=1..1 */

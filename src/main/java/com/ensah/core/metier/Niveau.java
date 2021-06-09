@@ -60,7 +60,7 @@ public class Niveau {
    		return modules.iterator();
    	}
    
-   public void setModules(java.util.Collection<Module> newModules) {
+   public void setModules(java.util.Set<Module> newModules) {
       removeAllModules();
       for (java.util.Iterator iter = newModules.iterator(); iter.hasNext();)
          addModules((Module)iter.next());
@@ -105,9 +105,13 @@ public class Niveau {
             oldModule.setNiveau((Niveau)null);
          }
       }
+      else 
+      {
+    	 modules = this.modules = new java.util.HashSet<Module>();
+      }
    }
    /** @pdGenerated default getter */
-   public java.util.Collection<Inscription> getNiveau() {
+   public java.util.Set<Inscription> getNiveau() {
       if (niveau == null)
          niveau = new java.util.HashSet<Inscription>();
       return niveau;
@@ -122,7 +126,7 @@ public class Niveau {
    
    /** @pdGenerated default setter
      * @param newNiveau */
-   public void setNiveau(java.util.Collection<Inscription> newNiveau) {
+   public void setNiveau(java.util.Set<Inscription> newNiveau) {
       removeAllNiveau();
       for (java.util.Iterator iter = newNiveau.iterator(); iter.hasNext();)
          addNiveau((Inscription)iter.next());
@@ -214,6 +218,12 @@ public class Niveau {
 	
 	public void setTitre(String titre) {
 		this.titre = titre;
+	}
+
+	@Override
+	public String toString() {
+		return "Niveau [idNiveau=" + idNiveau + ", alias=" + alias + ", titre=" + titre + ", modules=" + modules
+				+ ", niveau=" + niveau + ", filiere=" + filiere + "]";
 	}
 
    

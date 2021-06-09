@@ -12,6 +12,7 @@ import com.ensah.core.dao.IModuleDao;
 import com.ensah.core.metier.Module;
 import com.ensah.core.metier.Niveau;
 import com.ensah.core.service.Interface.IModuleService;
+import com.ensah.core.service.Interface.INiveauService;
 
 @Service
 @Transactional
@@ -21,14 +22,24 @@ public class ModuleServiceImp implements IModuleService{
 	@Autowired
 	private IModuleDao  dao;
 	
+	@Autowired
+	private INiveauService Niveau_services;
+	
 	@Override
-	public void add(Module M) {
-		dao.save(M);
+	public void add(Module M, Niveau N) {
+		N.addModules(M);
+		
+		Niveau_services.update(N);
 	}
 
 	@Override
-	public void update(Module M) {
-		dao.save(M);
+	public void update(Module NewModule) {
+		
+		Module OldModule = GetModuleById(NewModule.getIdModule());
+		OldModule.setCode(NewModule.getCode());
+		OldModule.setTitre(NewModule.getTitre());
+		
+		dao.save(OldModule);
 	}
 
 	@Override

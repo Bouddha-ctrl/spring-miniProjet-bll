@@ -12,10 +12,10 @@ public interface IFiliereService {
 	
 	public void delete(Filiere e);
 	
-	public void deleteById(String id) ;
+	public void deleteById(int id) ;
 	
 	public List<Filiere> getAllFiliere();
 	
-	public Filiere GetFiliereById(String id);
+	public Filiere GetFiliereById(int id);
 	
 }

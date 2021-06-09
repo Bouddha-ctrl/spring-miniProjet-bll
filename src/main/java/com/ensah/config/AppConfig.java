@@ -62,6 +62,9 @@ private Logger LOGGER = Logger.getLogger(getClass().getName());
 	        registry.addWebRequestInterceptor(interceptor);
 	}
 	
+	
+	
+	
 	@Override
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 	    registry.addResourceHandler("/resources/**").addResourceLocations("/resources/theme1");

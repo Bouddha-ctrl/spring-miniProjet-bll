@@ -3,10 +3,11 @@ package com.ensah.core.service.Interface;
 import java.util.List;
 
 import com.ensah.core.metier.Module;
+import com.ensah.core.metier.Niveau;
 
 public interface IModuleService {
 	
-	public void add(Module M);
+	public void add(Module M, Niveau N);
 	
 	public void update(Module M);
 	

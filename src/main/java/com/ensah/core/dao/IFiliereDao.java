@@ -6,6 +6,6 @@ import com.ensah.core.metier.Filiere;
 import com.ensah.genericDao.GenericDao;
 
 @Repository
-public interface IFiliereDao extends GenericDao<Filiere,String> {
+public interface IFiliereDao extends GenericDao<Filiere,Integer> {
 
 }

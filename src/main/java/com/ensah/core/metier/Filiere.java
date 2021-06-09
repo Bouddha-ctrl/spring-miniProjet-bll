@@ -8,6 +8,7 @@ package com.ensah.core.metier;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Range;
 
 import java.util.*;
@@ -26,31 +28,12 @@ import java.util.*;
 
 @Entity
 public class Filiere {
-   /** @pdOid 15c8c6d5-6e44-4ba3-abae-f5b94ce45409 */
 	
-	
-	
-
-	public Filiere( String idFiliere,
-		 String titreFiliere, String codeFiliere,
-		int anneeaccreditation,
-		int anneeFinaccreditation) {
-	this.idFiliere = idFiliere;
-	this.titreFiliere = titreFiliere;
-	this.codeFiliere = codeFiliere;
-	this.anneeaccreditation = anneeaccreditation;
-	this.anneeFinaccreditation = anneeFinaccreditation;
-	}
-	
-	
-
-	public Filiere() {
-	}
-
 	@Id
-	@NotBlank(message = "This field is required")
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	@Column
-	private String idFiliere;
+	private int idFiliere;
 
 	@Column
 	@NotBlank(message = "This field is required")
@@ -76,7 +59,7 @@ public class Filiere {
 	@OneToMany(mappedBy = "filiere", cascade = CascadeType.ALL)
 	public java.util.Set<Niveau> niveaux;
 
-	@Transient
+	@OneToMany(mappedBy = "filiere", cascade = CascadeType.ALL)
    	public java.util.Set<Coordination> periodeCoordination;
    
    
@@ -136,8 +119,10 @@ public class Filiere {
          }
       }
    }
+   
+   
    /** @pdGenerated default getter */
-   public java.util.Collection<Coordination> getPeriodeCoordination() {
+   public java.util.Set<Coordination> getPeriodeCoordination() {
       if (periodeCoordination == null)
          periodeCoordination = new java.util.HashSet<Coordination>();
       return periodeCoordination;
@@ -152,7 +137,7 @@ public class Filiere {
    
    /** @pdGenerated default setter
      * @param newPeriodeCoordination */
-   public void setPeriodeCoordination(java.util.Collection<Coordination> newPeriodeCoordination) {
+   public void setPeriodeCoordination(java.util.Set<Coordination> newPeriodeCoordination) {
       removeAllPeriodeCoordination();
       for (java.util.Iterator iter = newPeriodeCoordination.iterator(); iter.hasNext();)
          addPeriodeCoordination((Coordination)iter.next());
@@ -187,13 +172,13 @@ public class Filiere {
 
 
 	
-	public String getIdFiliere() {
+	public int getIdFiliere() {
 		return idFiliere;
 	}
 	
 	
 	
-	public void setIdFiliere(String idFiliere) {
+	public void setIdFiliere(int idFiliere) {
 		this.idFiliere = idFiliere;
 	}
 	

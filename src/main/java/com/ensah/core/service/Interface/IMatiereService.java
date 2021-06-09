@@ -3,10 +3,12 @@ package com.ensah.core.service.Interface;
 import java.util.List;
 
 import com.ensah.core.metier.Matiere;
+import com.ensah.core.metier.Module;
+
 
 public interface IMatiereService {
 
-	public void add(Matiere M);
+	public void add(Matiere Mat, Module Mod);
 	
 	public void update(Matiere M);
 	

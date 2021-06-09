@@ -1,22 +1,83 @@
-/***********************************************************************
- * Module:  Coordination.java
- * Author:  Hp
- * Purpose: Defines the Class Coordination
- ***********************************************************************/
 package com.ensah.core.metier;
 
 import java.util.*;
 
-/** @pdOid 63b5e40a-f00c-4d65-985a-c7e6dc8d7f28 */
-public class Coordination {
-   /** @pdOid 4cf91abd-9026-4c8c-a3cb-5ed9d48631a6 */
-   private int idCoordination;
-   /** @pdOid b5646649-9095-491f-8155-950a2b60a7d2 */
-   private java.util.Date dateDebut;
-   /** @pdOid 9f6c126f-07a8-4670-bd12-9e1340b1a5e3 */
-   private java.util.Date dateFin;
-   
-   /** @pdRoleInfo migr=no name=Enseignant assc=Association_17 coll=java.util.Collection impl=java.util.HashSet mult=1..1 */
-   public Enseignant coordonateur;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+public class Coordination {
+	
+	@Id
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
+	@Column
+	private int idCoordination;
+   
+	private java.util.Date dateDebut;
+   
+	private java.util.Date dateFin;
+   
+	@ManyToOne
+	@JoinColumn(name= "idEnseignant")
+	public Enseignant coordonateur;
+
+    @ManyToOne
+  	@JoinColumn(name= "idFiliere")
+    public Filiere filiere;
+    
+    public Filiere getFiliere() {
+        return filiere;
+     }
+     
+     public void setFiliere(Filiere newFiliere) {
+        if (this.filiere == null || !this.filiere.equals(newFiliere))
+        {
+           if (this.filiere != null)
+           {
+              Filiere oldFiliere = this.filiere;
+              this.filiere = null;
+              oldFiliere.removePeriodeCoordination(this);
+           }
+           if (newFiliere != null)
+           {
+              this.filiere = newFiliere;
+              this.filiere.addPeriodeCoordination(this);
+           }
+        }
+     }
+     
+
+	public int getIdCoordination() {
+		return idCoordination;
+	}
+
+	public void setIdCoordination(int idCoordination) {
+		this.idCoordination = idCoordination;
+	}
+
+	public java.util.Date getDateDebut() {
+		return dateDebut;
+	}
+
+	public void setDateDebut(java.util.Date dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
+	public java.util.Date getDateFin() {
+		return dateFin;
+	}
+
+	public void setDateFin(java.util.Date dateFin) {
+		this.dateFin = dateFin;
+	}
+
+    
+    
 }

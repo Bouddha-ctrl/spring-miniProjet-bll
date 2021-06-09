@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 
 import com.ensah.core.dao.IFiliereDao;
 import com.ensah.core.metier.Filiere;
@@ -21,7 +22,7 @@ public class FiliereServiceImp implements IFiliereService{
 	
 	@Override
 	public void add(Filiere E) {
-		dao.save(E);
+			dao.save(E);
 	}
 
 	@Override
@@ -35,7 +36,7 @@ public class FiliereServiceImp implements IFiliereService{
 	}
 
 	@Override
-	public Filiere GetFiliereById(String id) {
+	public Filiere GetFiliereById(int id) {
 		return dao.findById(id).get();
 	}
 
@@ -45,7 +46,7 @@ public class FiliereServiceImp implements IFiliereService{
 	}
 	
 	@Override
-	public void deleteById(String id)  {
+	public void deleteById(int id)  {
 		dao.deleteById(id);
 	}
 
