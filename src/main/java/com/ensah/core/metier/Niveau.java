@@ -223,7 +223,7 @@ public class Niveau {
 	@Override
 	public String toString() {
 		return "Niveau [idNiveau=" + idNiveau + ", alias=" + alias + ", titre=" + titre + ", modules=" + modules
-				+ ", niveau=" + niveau + ", filiere=" + filiere + "]";
+				+ ", niveau=" + niveau + ", filiere= override tostring to see filieres ]";
 	}
 
    

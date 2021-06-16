@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate5.HibernateTemplate;
@@ -24,6 +25,7 @@ import org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -39,8 +41,8 @@ import com.ensah.core.metier.Module;
 @Configuration
 @ComponentScan(basePackages = { "com.ensah" })
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "com.ensah.core.dao" })
-
+@EnableJpaRepositories(basePackages = { "com.ensah.core" })
+//@PropertySource("classpath:information.properties")
 public class AppConfig implements WebMvcConfigurer{
 private Logger LOGGER = Logger.getLogger(getClass().getName());
 	
@@ -128,4 +130,8 @@ private Logger LOGGER = Logger.getLogger(getClass().getName());
 
 		return transactionManager;
 	}
+	
+	
+	
+	
 }

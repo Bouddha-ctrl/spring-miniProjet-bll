@@ -32,7 +32,32 @@ public class Coordination {
   	@JoinColumn(name= "idFiliere")
     public Filiere filiere;
     
-    public Filiere getFiliere() {
+    
+    
+    
+    public Enseignant getCoordonateur() {
+		return coordonateur;
+	}
+
+	public void setCoordonateur(Enseignant newCoordonateur) {
+
+		if (this.coordonateur == null || !this.coordonateur.equals(newCoordonateur))
+        {
+           if (this.coordonateur != null)
+           {
+        	   Enseignant oldCoordonateur = this.coordonateur;
+              this.coordonateur = null;
+              oldCoordonateur.removeCoordinations(this);
+           }
+           if (newCoordonateur != null)
+           {
+              this.coordonateur = newCoordonateur;
+              this.coordonateur.addCoordinations(this);
+           }
+        }
+	}
+
+	public Filiere getFiliere() {
         return filiere;
      }
      

@@ -7,30 +7,26 @@ package com.ensah.core.metier;
 
 import java.util.*;
 
-/** @pdOid 8483cb8e-2f42-4216-a903-ea14449fe272 */
 public class Absence {
-   /** @pdOid 048e768f-529b-4b9b-984a-7b602ca61595 */
-   private int idAbsence;
-   /** @pdOid 12db9c3f-b9f3-4c16-86b5-580b93395cd5 */
+
+
    private java.util.Date dateHeureDebutAbsence;
-   /** @pdOid 09a4d15e-0c7b-4020-a1f1-ccd24560fb6d */
+
    private java.util.Date dateHeureFinAbsence;
-   /** @pdOid cf20f4da-5aea-44d2-8306-60e6bc1d67df */
+
    private int etat;
-   /** @pdOid 36a659ce-b1db-4a34-bf2e-f85f408078c1 */
+
    private String typeSaisie;
    
-   /** @pdRoleInfo migr=no name=PieceJustificative assc=Absence_PieceJustificative coll=java.util.Collection impl=java.util.HashSet mult=0..* */
    public java.util.Set<PieceJustificative> pieceJustificative;
-   /** @pdRoleInfo migr=no name=Inscription assc=Association_9 coll=java.util.Collection impl=java.util.HashSet mult=1..1 */
+
    public Inscription inscription;
-   /** @pdRoleInfo migr=no name=TypeSeance assc=Association_11 coll=java.util.Collection impl=java.util.HashSet mult=1..1 */
+
    public TypeSeance typeSeance;
-   /** @pdRoleInfo migr=no name=Enseignant assc=Association_20 coll=java.util.Collection impl=java.util.HashSet mult=1..1 */
+
    public Enseignant observateur;
    
    
-   /** @pdGenerated default getter */
    public java.util.Collection<PieceJustificative> getPieceJustificative() {
       if (pieceJustificative == null)
          pieceJustificative = new java.util.HashSet<PieceJustificative>();

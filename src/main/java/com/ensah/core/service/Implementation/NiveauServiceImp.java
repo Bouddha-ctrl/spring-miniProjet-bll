@@ -27,9 +27,13 @@ public class NiveauServiceImp implements INiveauService {
 	@Override
 	public void add(Niveau N, Filiere F) {
 		
-		F.addNiveaux(N);
-
-		Filiere_services.update(F);
+		N.setFiliere(F);
+		dao.save(N);
+		
+		//or
+		//F.addNiveaux(N);
+		//Filiere_services.update(F);
+		
 	}
 
 	@Override
@@ -37,10 +41,17 @@ public class NiveauServiceImp implements INiveauService {
 		
 		Niveau OldNiveau = GetNiveauById(NewNiveau.getIdNiveau());
 		
-		OldNiveau.setAlias(NewNiveau.getAlias());
-		OldNiveau.setTitre(NewNiveau.getTitre());
+		//Working
+		/*  OldNiveau.setAlias(NewNiveau.getAlias());
+		    OldNiveau.setTitre(NewNiveau.getTitre());
+		    dao.save(OldNiveau);
+		*/
 		
-		dao.save(OldNiveau);
+		//PersistentObjectException
+		/*NewNiveau.setFiliere(OldNiveau.getFiliere());
+		NewNiveau.setModules(OldNiveau.getModules());*/
+		dao.save(NewNiveau);
+		
 	}
 
 	@Override

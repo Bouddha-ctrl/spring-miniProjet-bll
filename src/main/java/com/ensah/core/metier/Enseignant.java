@@ -22,7 +22,7 @@ public class Enseignant extends Utilisateur {
 	public java.util.Set<Absence> absencesMarquees;
    
 	@OneToMany(mappedBy = "coordonateur", cascade = CascadeType.ALL)
-	public java.util.Set<Coordination> coordinations;
+	public java.util.List<Coordination> coordinations;
 
 
 	public java.util.Set<Absence> getAbsencesMarquees() {
@@ -81,22 +81,22 @@ public class Enseignant extends Utilisateur {
    }
    
    /** @pdGenerated default getter */
-   public java.util.Set<Coordination> getCoordinations() {
+   public java.util.List<Coordination> getCoordinations() {
       if (coordinations == null)
-         coordinations = new java.util.HashSet<Coordination>();
+         coordinations = new java.util.ArrayList<Coordination>();
       return coordinations;
    }
    
    /** @pdGenerated default iterator getter */
    public java.util.Iterator getIteratorCoordinations() {
       if (coordinations == null)
-         coordinations = new java.util.HashSet<Coordination>();
+         coordinations = new java.util.ArrayList<Coordination>();
       return coordinations.iterator();
    }
    
    /** @pdGenerated default setter
      * @param newPeriodeCoordination */
-   public void setCoordinations(java.util.Set<Coordination> newCoordination) {
+   public void setCoordinations(java.util.List<Coordination> newCoordination) {
       removeAllCoordinations();
       for (java.util.Iterator iter = newCoordination.iterator(); iter.hasNext();)
          addCoordinations((Coordination)iter.next());
@@ -108,7 +108,7 @@ public class Enseignant extends Utilisateur {
       if (newCoordination == null)
          return;
       if (this.coordinations == null)
-         this.coordinations = new java.util.HashSet<Coordination>();
+         this.coordinations = new java.util.ArrayList<Coordination>();
       if (!this.coordinations.contains(newCoordination))
          this.coordinations.add(newCoordination);
    }
@@ -127,6 +127,9 @@ public class Enseignant extends Utilisateur {
    public void removeAllCoordinations() {
       if (coordinations != null)
          coordinations.clear();
+      else
+         this.coordinations = new java.util.ArrayList<Coordination>();
+
    }
 	
 	public String getSpecialite() {

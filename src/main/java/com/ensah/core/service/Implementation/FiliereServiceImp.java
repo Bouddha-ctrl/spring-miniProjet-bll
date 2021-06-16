@@ -22,7 +22,7 @@ public class FiliereServiceImp implements IFiliereService{
 	
 	@Override
 	public void add(Filiere E) {
-			dao.save(E);
+		dao.save(E);
 	}
 
 	@Override

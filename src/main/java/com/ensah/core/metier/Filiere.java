@@ -60,7 +60,7 @@ public class Filiere {
 	public java.util.Set<Niveau> niveaux;
 
 	@OneToMany(mappedBy = "filiere", cascade = CascadeType.ALL)
-   	public java.util.Set<Coordination> periodeCoordination;
+   	public java.util.List<Coordination> periodeCoordination;
    
    
    public java.util.Set<Niveau> getNiveaux() {
@@ -122,22 +122,22 @@ public class Filiere {
    
    
    /** @pdGenerated default getter */
-   public java.util.Set<Coordination> getPeriodeCoordination() {
+   public java.util.List<Coordination> getPeriodeCoordination() {
       if (periodeCoordination == null)
-         periodeCoordination = new java.util.HashSet<Coordination>();
+         periodeCoordination = new java.util.ArrayList<Coordination>();
       return periodeCoordination;
    }
    
    /** @pdGenerated default iterator getter */
    public java.util.Iterator getIteratorPeriodeCoordination() {
       if (periodeCoordination == null)
-         periodeCoordination = new java.util.HashSet<Coordination>();
+         periodeCoordination = new java.util.ArrayList<Coordination>();
       return periodeCoordination.iterator();
    }
    
    /** @pdGenerated default setter
      * @param newPeriodeCoordination */
-   public void setPeriodeCoordination(java.util.Set<Coordination> newPeriodeCoordination) {
+   public void setPeriodeCoordination(java.util.List<Coordination> newPeriodeCoordination) {
       removeAllPeriodeCoordination();
       for (java.util.Iterator iter = newPeriodeCoordination.iterator(); iter.hasNext();)
          addPeriodeCoordination((Coordination)iter.next());
@@ -149,7 +149,7 @@ public class Filiere {
       if (newCoordination == null)
          return;
       if (this.periodeCoordination == null)
-         this.periodeCoordination = new java.util.HashSet<Coordination>();
+         this.periodeCoordination = new java.util.ArrayList<Coordination>();
       if (!this.periodeCoordination.contains(newCoordination))
          this.periodeCoordination.add(newCoordination);
    }
@@ -168,6 +168,8 @@ public class Filiere {
    public void removeAllPeriodeCoordination() {
       if (periodeCoordination != null)
          periodeCoordination.clear();
+      else
+    	 this.periodeCoordination = new java.util.ArrayList<Coordination>();
    }
 
 
@@ -236,7 +238,7 @@ public class Filiere {
 	public String toString() {
 		return "Filiere [idFiliere=" + idFiliere + ", titreFiliere=" + titreFiliere + ", codeFiliere=" + codeFiliere
 				+ ", anneeaccreditation=" + anneeaccreditation + ", anneeFinaccreditation=" + anneeFinaccreditation
-				+ "]";
+				+ "Niveux ["+niveaux+"] ]";
 	}
 
 	
