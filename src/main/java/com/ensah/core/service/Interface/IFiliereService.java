@@ -18,4 +18,7 @@ public interface IFiliereService {
 	
 	public Filiere GetFiliereById(int id);
 	
+	public List<Filiere> getSearch(String searchParam);
+
+	
 }

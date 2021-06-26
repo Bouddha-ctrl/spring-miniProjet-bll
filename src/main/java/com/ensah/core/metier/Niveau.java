@@ -10,6 +10,7 @@ import java.util.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -43,7 +44,7 @@ public class Niveau {
 	@Transient
 	public java.util.Set<Inscription> niveau;
 
-   	@ManyToOne
+   	@ManyToOne(fetch = FetchType.LAZY)
    	@JoinColumn(name= "idFiliere")
    	public Filiere filiere;
    
@@ -220,11 +221,6 @@ public class Niveau {
 		this.titre = titre;
 	}
 
-	@Override
-	public String toString() {
-		return "Niveau [idNiveau=" + idNiveau + ", alias=" + alias + ", titre=" + titre + ", modules=" + modules
-				+ ", niveau=" + niveau + ", filiere= override tostring to see filieres ]";
-	}
 
    
    

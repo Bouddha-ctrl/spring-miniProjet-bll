@@ -9,6 +9,7 @@ import java.util.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -35,7 +36,7 @@ public class Matiere {
 	@NotBlank(message = "This field is required")
 	private String code;
    
-   	@ManyToOne
+   	@ManyToOne(fetch = FetchType.LAZY)
   	@JoinColumn(name= "idModule")
    	public Module module;
    

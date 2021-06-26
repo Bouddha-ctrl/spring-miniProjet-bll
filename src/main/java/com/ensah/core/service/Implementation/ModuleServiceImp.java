@@ -1,5 +1,6 @@
 package com.ensah.core.service.Implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -22,14 +23,11 @@ public class ModuleServiceImp implements IModuleService{
 	@Autowired
 	private IModuleDao  dao;
 	
-	@Autowired
-	private INiveauService Niveau_services;
-	
+
 	@Override
 	public void add(Module M, Niveau N) {
-		N.addModules(M);
-		
-		Niveau_services.update(N);
+		M.setNiveau(N);
+		dao.save(M);
 	}
 
 	@Override
@@ -61,6 +59,34 @@ public class ModuleServiceImp implements IModuleService{
 	@Override
 	public Module GetModuleById(int id) {
 		return dao.findById(id).get();
+	}
+
+	@Override
+	public List<Module> getSearch(String searchParam) {
+		List<Module> list = new ArrayList<Module>();
+		String[] attribute = searchParam.split(":", 2); //the pattern will be applied at most limit-1 times, the first :
+		String searchBy = attribute[0];   
+		String searchValue = attribute[1];
+		
+		switch(searchBy)
+		{
+			case "idModule":
+				try {
+				list.add(GetModuleById(Integer.parseInt(searchValue)));
+				}catch(Exception ex){}finally{};
+				break;
+			case "code":
+				list = dao.findByCodeContaining(searchValue);
+				break;
+			case "titre":
+				list = dao.findByTitreContaining(searchValue);
+				break;
+
+			default:
+				System.out.println("Error switch ModuleServiceImp.getSearch");
+		}
+		
+			return list;
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.ensah.core.service.Implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -21,8 +22,6 @@ public class NiveauServiceImp implements INiveauService {
 	@Autowired
 	private INiveauDao  dao;
 	
-	@Autowired
-	private IFiliereService Filiere_services;
 	
 	@Override
 	public void add(Niveau N, Filiere F) {
@@ -42,15 +41,15 @@ public class NiveauServiceImp implements INiveauService {
 		Niveau OldNiveau = GetNiveauById(NewNiveau.getIdNiveau());
 		
 		//Working
-		/*  OldNiveau.setAlias(NewNiveau.getAlias());
+		  OldNiveau.setAlias(NewNiveau.getAlias());
 		    OldNiveau.setTitre(NewNiveau.getTitre());
 		    dao.save(OldNiveau);
-		*/
+		
 		
 		//PersistentObjectException
 		/*NewNiveau.setFiliere(OldNiveau.getFiliere());
 		NewNiveau.setModules(OldNiveau.getModules());*/
-		dao.save(NewNiveau);
+		//dao.save(NewNiveau);
 		
 	}
 
@@ -72,6 +71,34 @@ public class NiveauServiceImp implements INiveauService {
 	@Override
 	public Niveau GetNiveauById(int id) {
 		return dao.findById(id).get();
+	}
+
+	@Override
+	public List<Niveau> getSearch(String searchParam) {
+		List<Niveau> list = new ArrayList<Niveau>();
+		String[] attribute = searchParam.split(":", 2); //the pattern will be applied at most limit-1 times, the first :
+		String searchBy = attribute[0];   
+		String searchValue = attribute[1];
+
+		switch(searchBy)
+		{
+			case "idNiveau":
+				try {
+				list.add(GetNiveauById(Integer.parseInt(searchValue)));
+				}catch(Exception ex){}finally{};
+				break;
+			case "alias":
+				list = dao.findByAliasContaining(searchValue);
+				break;
+			case "titre":
+				list = dao.findByTitreContaining(searchValue);
+				break;
+
+			default:
+				System.out.println("Error switch NiveauServiceImp.getSearch");
+		}
+		
+			return list;
 	}
 
 }

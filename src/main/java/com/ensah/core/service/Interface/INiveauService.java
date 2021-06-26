@@ -20,4 +20,6 @@ public interface INiveauService {
 	
 	public Niveau GetNiveauById(int id);
 	
+	public List<Niveau> getSearch(String searchParam);
+	
 }

@@ -18,4 +18,7 @@ public interface IModuleService {
 	public List<Module> getAllModule();
 	
 	public Module GetModuleById(int id);
+	
+	public List<Module> getSearch(String searchParam);
+
 }

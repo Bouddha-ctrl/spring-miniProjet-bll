@@ -10,6 +10,7 @@ import java.util.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -39,7 +40,7 @@ public class Module {
 	@OneToMany(mappedBy = "module", cascade = CascadeType.ALL)
 	public java.util.Set<Matiere> matieres;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
    	@JoinColumn(name= "idNiveau")
 	public Niveau niveau;
    

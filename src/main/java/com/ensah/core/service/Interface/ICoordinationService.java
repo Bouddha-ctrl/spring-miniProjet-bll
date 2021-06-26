@@ -3,10 +3,11 @@ package com.ensah.core.service.Interface;
 import java.util.List;
 
 import com.ensah.core.metier.Coordination;
+import com.ensah.core.model.CoordinationModel;
 
 public interface ICoordinationService {
 
-	public void add(Coordination E,int idFiliere, int idEnseignant);
+	public void add(CoordinationModel C);
 	
 	public void update(Coordination e);
 	

@@ -234,13 +234,6 @@ public class Filiere {
 
 
 
-	@Override
-	public String toString() {
-		return "Filiere [idFiliere=" + idFiliere + ", titreFiliere=" + titreFiliere + ", codeFiliere=" + codeFiliere
-				+ ", anneeaccreditation=" + anneeaccreditation + ", anneeFinaccreditation=" + anneeFinaccreditation
-				+ "Niveux ["+niveaux+"] ]";
-	}
-
 	
    
 }

@@ -19,4 +19,7 @@ public interface IMatiereService {
 	public List<Matiere> getAllMatiere();
 	
 	public Matiere GetMatiereById(int id);
+	
+	public List<Matiere> getSearch(String searchParam);
+
 }
