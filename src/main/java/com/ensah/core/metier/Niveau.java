@@ -221,6 +221,12 @@ public class Niveau {
 		this.titre = titre;
 	}
 
+	@Override
+	public String toString() {
+		return "Niveau [idNiveau=" + idNiveau + ", alias=" + alias + ", titre=" + titre + ", modules=" + modules
+				+ ", niveau=" + niveau + "]";
+	}
+
 
    
    

@@ -22,7 +22,7 @@ public class Enseignant extends Utilisateur {
 	public java.util.Set<Absence> absencesMarquees;
    
 	@OneToMany(mappedBy = "coordonateur", cascade = CascadeType.ALL)
-	public java.util.List<Coordination> coordinations;
+	public List<Coordination> coordinations;
 
 
 	public java.util.Set<Absence> getAbsencesMarquees() {

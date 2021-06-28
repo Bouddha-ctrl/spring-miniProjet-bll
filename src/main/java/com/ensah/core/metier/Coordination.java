@@ -28,6 +28,7 @@ public class Coordination {
 	
 	@NotNull(message = "This field is required")
 	@Temporal(TemporalType.DATE)
+	//@DateTimeFormat(pattern="dd-MM-yyyy")
 	private Date dateDebut;
    
 	@NotNull(message = "This field is required")

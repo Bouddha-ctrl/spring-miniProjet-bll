@@ -38,29 +38,29 @@ public class Module {
 	private String code;
    
 	@OneToMany(mappedBy = "module", cascade = CascadeType.ALL)
-	public java.util.Set<Matiere> matieres;
+	public List<Matiere> matieres;
 
 	@ManyToOne(fetch = FetchType.LAZY)
    	@JoinColumn(name= "idNiveau")
 	public Niveau niveau;
    
    
-   public java.util.Set<Matiere> getMatieres() {
+   public List<Matiere> getMatieres() {
       if (matieres == null)
-         matieres = new java.util.HashSet<Matiere>();
+         matieres = new ArrayList<Matiere>();
       return matieres;
    }
    
    /** @pdGenerated default iterator getter */
    public java.util.Iterator getIteratorMatieres() {
       if (matieres == null)
-         matieres = new java.util.HashSet<Matiere>();
+         matieres = new ArrayList<Matiere>();
       return matieres.iterator();
    }
    
    /** @pdGenerated default setter
      * @param newMatieres */
-   public void setMatieres(java.util.Set<Matiere> newMatieres) {
+   public void setMatieres(List<Matiere> newMatieres) {
       removeAllMatieres();
       for (java.util.Iterator iter = newMatieres.iterator(); iter.hasNext();)
          addMatieres((Matiere)iter.next());
@@ -72,7 +72,7 @@ public class Module {
       if (newMatiere == null)
          return;
       if (this.matieres == null)
-         this.matieres = new java.util.HashSet<Matiere>();
+         this.matieres = new ArrayList<Matiere>();
       if (!this.matieres.contains(newMatiere))
       {
          this.matieres.add(newMatiere);

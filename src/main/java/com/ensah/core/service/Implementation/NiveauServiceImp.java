@@ -42,8 +42,8 @@ public class NiveauServiceImp implements INiveauService {
 		
 		//Working
 		  OldNiveau.setAlias(NewNiveau.getAlias());
-		    OldNiveau.setTitre(NewNiveau.getTitre());
-		    dao.save(OldNiveau);
+		  OldNiveau.setTitre(NewNiveau.getTitre());
+		  dao.save(OldNiveau);
 		
 		
 		//PersistentObjectException

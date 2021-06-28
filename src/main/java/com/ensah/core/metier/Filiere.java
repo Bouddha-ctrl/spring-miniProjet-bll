@@ -232,7 +232,14 @@ public class Filiere {
 		this.anneeFinaccreditation = anneeFinaccreditation;
 	}
 
+	@Override
+	public String toString() {
+		return "Filiere [idFiliere=" + idFiliere + ", titreFiliere=" + titreFiliere + ", codeFiliere=" + codeFiliere
+				+ ", anneeaccreditation=" + anneeaccreditation + ", anneeFinaccreditation=" + anneeFinaccreditation
+				+ ", niveaux=" + niveaux + ", periodeCoordination=" + periodeCoordination + "]";
+	}
 
+	
 
 	
    
